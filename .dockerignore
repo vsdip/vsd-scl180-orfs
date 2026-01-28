@@ -1,0 +1,37 @@
+# Build working directories
+
+# Build files
+build_openroad.log
+
+# Test working directories
+flow/results
+flow/logs
+flow/reports
+flow/objects
+flow/tech
+
+bazel-bin/
+bazel-obj/
+bazel-OpenROAD-flow-scripts/
+bazel-testlogs/
+
+# Tar archives
+flow/*tar.gz
+flow/run-me*.sh
+flow/vars*.sh
+flow/vars*.tcl
+flow/vars*.gdb
+
+# Common temp files
+flow/*.log
+
+# Platforms
+
+# network
+.nfs*
+
+# core dumps
+core*
+
+# local dependencies
+dependencies/

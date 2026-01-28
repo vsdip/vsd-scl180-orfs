@@ -1,0 +1,102 @@
+{
+    "synth__design__instance__area__stdcell": {
+        "value": 489779.41376,
+        "compare": "<="
+    },
+    "constraints__clocks__count": {
+        "value": 1,
+        "compare": "=="
+    },
+    "placeopt__design__instance__area": {
+        "value": 650139,
+        "compare": "<="
+    },
+    "placeopt__design__instance__count__stdcell": {
+        "value": 21903,
+        "compare": "<="
+    },
+    "detailedplace__design__violations": {
+        "value": 0,
+        "compare": "=="
+    },
+    "cts__design__instance__count__setup_buffer": {
+        "value": 1831,
+        "compare": "<="
+    },
+    "cts__design__instance__count__hold_buffer": {
+        "value": 1831,
+        "compare": "<="
+    },
+    "cts__timing__setup__ws": {
+        "value": -1.16,
+        "compare": ">="
+    },
+    "cts__timing__setup__tns": {
+        "value": -144.0,
+        "compare": ">="
+    },
+    "cts__timing__hold__ws": {
+        "value": -0.15,
+        "compare": ">="
+    },
+    "cts__timing__hold__tns": {
+        "value": -0.6,
+        "compare": ">="
+    },
+    "globalroute__antenna_diodes_count": {
+        "value": 100,
+        "compare": "<="
+    },
+    "globalroute__timing__setup__ws": {
+        "value": -1.29,
+        "compare": ">="
+    },
+    "globalroute__timing__setup__tns": {
+        "value": -160.0,
+        "compare": ">="
+    },
+    "globalroute__timing__hold__ws": {
+        "value": -0.15,
+        "compare": ">="
+    },
+    "globalroute__timing__hold__tns": {
+        "value": -0.6,
+        "compare": ">="
+    },
+    "detailedroute__route__wirelength": {
+        "value": 1501193,
+        "compare": "<="
+    },
+    "detailedroute__route__drc_errors": {
+        "value": 0,
+        "compare": "<="
+    },
+    "detailedroute__antenna__violating__nets": {
+        "value": 0,
+        "compare": "<="
+    },
+    "detailedroute__antenna_diodes_count": {
+        "value": 100,
+        "compare": "<="
+    },
+    "finish__timing__setup__ws": {
+        "value": -1.28,
+        "compare": ">="
+    },
+    "finish__timing__setup__tns": {
+        "value": -154.0,
+        "compare": ">="
+    },
+    "finish__timing__hold__ws": {
+        "value": -0.15,
+        "compare": ">="
+    },
+    "finish__timing__hold__tns": {
+        "value": -0.6,
+        "compare": ">="
+    },
+    "finish__design__instance__area": {
+        "value": 765254,
+        "compare": "<="
+    }
+}
