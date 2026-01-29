@@ -41,7 +41,7 @@
 # DESIGN_CONFIG=./designs/sky130hd/aes/config.mk
 # DESIGN_CONFIG=./designs/sky130hd/chameleon/config.mk
 # DESIGN_CONFIG=./designs/sky130hd/gcd/config.mk
-DESIGN_CONFIG=./designs/scl180fs120/gcd/config.mk
+ DESIGN_CONFIG=./designs/scl180fs120/gcd/config.mk
 # DESIGN_CONFIG=./designs/sky130hd/ibex/config.mk
 # DESIGN_CONFIG=./designs/sky130hd/jpeg/config.mk
 # DESIGN_CONFIG=./designs/sky130hd/microwatt/config.mk
@@ -194,31 +194,47 @@ $(OBJECTS_DIR)/klayout.lyt: $(KLAYOUT_TECH_FILE) $(OBJECTS_DIR)/klayout_tech.lef
 
 .PHONY: do-klayout
 do-klayout:
-ifeq ($(KLAYOUT_ENV_VAR_IN_PATH),valid)
-	SC_LEF_RELATIVE_PATH="$(shell realpath --relative-to=$(RESULTS_DIR) $(SC_LEF))"; \
-	OTHER_LEFS_RELATIVE_PATHS=$$(echo "$(foreach file, $(OBJECTS_DIR)/klayout_tech.lef $(ADDITIONAL_LEFS),<lef-files>$$(realpath --relative-to=$(RESULTS_DIR) $(file))</lef-files>)"); \
-	sed 's,<lef-files>.*</lef-files>,<lef-files>'"$$SC_LEF_RELATIVE_PATH"'</lef-files>'"$$OTHER_LEFS_RELATIVE_PATHS"',g' $(KLAYOUT_TECH_FILE) > $(OBJECTS_DIR)/klayout.lyt
-else
-	sed 's,<lef-files>.*</lef-files>,$(foreach file, $(OBJECTS_DIR)/klayout_tech.lef $(SC_LEF) $(ADDITIONAL_LEFS),<lef-files>$(shell realpath --relative-to=$(RESULTS_DIR) $(file))</lef-files>),g' $(KLAYOUT_TECH_FILE) > $(OBJECTS_DIR)/klayout.lyt
-endif
+	@mkdir -p $(OBJECTS_DIR)
+	@set -e; \
+	tmp_lefs="$(OBJECTS_DIR)/.klayout_lefs.tmp"; \
+	rm -f "$$tmp_lefs"; \
+	LEF_FILES="$(OBJECTS_DIR)/klayout_tech.lef $(SC_LEF) $(ADDITIONAL_LEFS)"; \
+	for f in $$LEF_FILES; do \
+	  rel=$$(realpath --relative-to="$(RESULTS_DIR)" "$$f"); \
+	  printf '   <lef-files>%s</lef-files>\n' "$$rel" >> "$$tmp_lefs"; \
+	done; \
+	awk -v leffile="$$tmp_lefs" '\
+	  /<lef-files>/ { next } \
+	  /<\/lefdef>/ { \
+	    while ((getline line < leffile) > 0) print line; \
+	    close(leffile); \
+	  } \
+	  { print }' \
+	  "$(KLAYOUT_TECH_FILE)" > "$(OBJECTS_DIR)/klayout.lyt"; \
+	rm -f "$$tmp_lefs"
 	sed -i 's,<map-file>.*</map-file>,$(foreach file, $(FLOW_HOME)/platforms/$(PLATFORM)/*map,<map-file>$(shell realpath $(file))</map-file>),g' $(OBJECTS_DIR)/klayout.lyt
 
-$(OBJECTS_DIR)/klayout_wrap.lyt: $(KLAYOUT_TECH_FILE) $(OBJECTS_DIR)/klayout_tech.lef
-	$(UNSET_AND_MAKE) do-klayout_wrap
 
 .PHONY: do-klayout_wrap
 do-klayout_wrap:
-	sed 's,<lef-files>.*</lef-files>,$(foreach file, $(OBJECTS_DIR)/klayout_tech.lef $(WRAP_LEFS),<lef-files>$(shell realpath --relative-to=$(OBJECTS_DIR)/def $(file))</lef-files>),g' $(KLAYOUT_TECH_FILE) > $(OBJECTS_DIR)/klayout_wrap.lyt
-
-$(WRAPPED_LEFS):
-	mkdir -p $(OBJECTS_DIR)/lef $(OBJECTS_DIR)/def
-	util/cell-veneer/wrap.tcl -cfg $(WRAP_CFG) -macro $(filter %$(notdir $(@:_mod.lef=.lef)),$(WRAP_LEFS))
-	mv $(notdir $@) $@
-	mv $(notdir $(@:lef=def)) $(dir $@)../def/$(notdir $(@:lef=def))
-
-$(WRAPPED_LIBS):
-	mkdir -p $(OBJECTS_DIR)/lib
-	sed 's/library(\(.*\))/library(\1_mod)/g' $(filter %$(notdir $(@:_mod.lib=.lib)),$(WRAP_LIBS)) | sed 's/cell(\(.*\))/cell(\1_mod)/g' > $@
+	@mkdir -p $(OBJECTS_DIR)
+	@set -e; \
+	tmp_lefs="$(OBJECTS_DIR)/.klayout_wrap_lefs.tmp"; \
+	rm -f "$$tmp_lefs"; \
+	LEF_FILES="$(OBJECTS_DIR)/klayout_tech.lef $(WRAP_LEFS)"; \
+	for f in $$LEF_FILES; do \
+	  rel=$$(realpath --relative-to="$(OBJECTS_DIR)/def" "$$f"); \
+	  printf '   <lef-files>%s</lef-files>\n' "$$rel" >> "$$tmp_lefs"; \
+	done; \
+	awk -v leffile="$$tmp_lefs" '\
+	  /<lef-files>/ { next } \
+	  /<\/lefdef>/ { \
+	    while ((getline line < leffile) > 0) print line; \
+	    close(leffile); \
+	  } \
+	  { print }' \
+	  "$(KLAYOUT_TECH_FILE)" > "$(OBJECTS_DIR)/klayout_wrap.lyt"; \
+	rm -f "$$tmp_lefs"
 
 # ==============================================================================
 #  ______   ___   _ _____ _   _ _____ ____ ___ ____
