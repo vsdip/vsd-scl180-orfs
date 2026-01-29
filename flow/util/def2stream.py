@@ -33,9 +33,22 @@ for i in main_layout.each_cell():
             i.clear()
 
 # Load in the gds to merge
+#for fil in in_files.split():
+#    print("\t{0}".format(fil))
+#    main_layout.read(fil)
+
+# Load in the gds to merge (merge on cell name conflicts)
+gds_opts = pya.LoadLayoutOptions()
+
+# Different KLayout builds expose this slightly differently; try both styles.
+gds_opts = pya.LoadLayoutOptions()
+gds_opts.cell_conflict_resolution = (
+    pya.LoadLayoutOptions.CellConflictResolution.AddToCell
+)
+
 for fil in in_files.split():
     print("\t{0}".format(fil))
-    main_layout.read(fil)
+    main_layout.read(fil, gds_opts)
 
 # Copy the top level only to a new layout
 top_only_layout = pya.Layout()
