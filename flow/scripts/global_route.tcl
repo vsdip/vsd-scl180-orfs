@@ -3,6 +3,24 @@ source $::env(SCRIPTS_DIR)/load.tcl
 erase_non_stage_variables grt
 load_design 4_cts.odb 4_cts.sdc
 
+# Fix mis-classified constant nets (one_/zero_) anywhere in hierarchy.
+# TritonRoute can't route POWER/GROUND nets as normal signals.
+set block [ord::get_db_block]
+set fixed 0
+foreach net [$block getNets] {
+  set name [$net getName]
+  if {[regexp {(^|/)(zero_|one_)$} $name]} {
+    set t [$net getSigType]
+    if {$t ne "SIGNAL"} {
+      puts "INFO: Forcing $name to SIGNAL (was $t)"
+      $net setSigType SIGNAL
+      incr fixed
+    }
+  }
+}
+puts "INFO: Constant-net sigType fixes applied: $fixed"
+
+
 # This proc is here to allow us to use 'return' to return early from this
 # file which is sourced
 proc global_route_helper { } {
