@@ -16,6 +16,10 @@ if [ -d "$ORFS/lib" ] && ls "$ORFS/lib"/*.so* >/dev/null 2>&1; then
   echo '/usr/local/lib/openroad' | sudo tee /etc/ld.so.conf.d/openroad.conf >/dev/null
 fi
 
+# Ensure runtime deps for the binary exist (tclreadline is needed)
+sudo apt-get update
+sudo apt-get install -y --no-install-recommends tcl-tclreadline
+
 sudo ldconfig
 
 # Sanity check: fail if any deps still missing
