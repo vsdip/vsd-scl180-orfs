@@ -69,6 +69,9 @@ EXPOSE 6080
 CMD ["/usr/bin/supervisord", "-n"]
 
 
+RUN locale-gen en_US.UTF-8
+ENV LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8
+
 
 
 
