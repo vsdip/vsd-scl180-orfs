@@ -64,9 +64,10 @@ ENV YOSYS_PLUGIN_PATH="/opt/oss-cad-suite/share/yosys/plugins" \
 # -----------------------------
 # noVNC desktop environment
 # -----------------------------
-COPY supervisord.conf /etc/supervisor/conf.d/vnc.conf
+COPY .devcontainer/supervisord.conf /etc/supervisor/conf.d/vnc.conf
 EXPOSE 6080
 CMD ["/usr/bin/supervisord", "-n"]
+
 
 
 
