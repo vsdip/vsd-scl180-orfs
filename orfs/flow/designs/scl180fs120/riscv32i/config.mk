@@ -1,0 +1,16 @@
+export DESIGN_NICKNAME = riscv32i
+export DESIGN_NAME = riscv
+export PLATFORM    = scl180fs120
+
+export VERILOG_FILES = $(sort $(wildcard $(DESIGN_HOME)/src/$(DESIGN_NICKNAME)/*.v))
+export SDC_FILE      = $(DESIGN_HOME)/$(PLATFORM)/$(DESIGN_NICKNAME)/constraint.sdc
+
+export CORE_UTILIZATION = 25
+export PLACE_DENSITY_LB_ADDON = 0.2
+
+export REMOVE_ABC_BUFFERS = 1
+
+export SWAP_ARITH_OPERATORS = 1
+export OPENROAD_HIERARCHICAL = 1
+export REMOVE_CELLS_FOR_EQY = su01d*
+

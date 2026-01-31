@@ -109,3 +109,8 @@ bazel-testlogs
 
 # python venv
 venv/
+
+# Allow SCL180FS120 designs
+!flow/designs/scl180fs120
+!flow/designs/scl180fs120/**
+
