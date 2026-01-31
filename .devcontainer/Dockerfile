@@ -27,6 +27,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libqt5charts5 libyaml-cpp0.7 \
  && apt-get clean && rm -rf /var/lib/apt/lists/*
 
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    libstdc++6 libgcc-s1 zlib1g libtcl8.6 libtk8.6 \
+ && rm -rf /var/lib/apt/lists/*
+
 # OSS CAD Suite (Yosys, etc.)
 RUN set -eux; \
     curl -L https://github.com/YosysHQ/oss-cad-suite-build/releases/download/2025-10-31/oss-cad-suite-linux-x64-20251031.tgz \
@@ -63,4 +67,5 @@ ENV YOSYS_PLUGIN_PATH="/opt/oss-cad-suite/share/yosys/plugins" \
 COPY supervisord.conf /etc/supervisor/conf.d/vnc.conf
 EXPOSE 6080
 CMD ["/usr/bin/supervisord", "-n"]
+
 
