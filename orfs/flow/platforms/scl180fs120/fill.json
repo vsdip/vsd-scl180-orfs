@@ -1,0 +1,99 @@
+{
+  "layers": {
+    "met1": {
+      "layer": 40,
+      "name": "M1",
+      "dir": "H",
+      "datatype": 8,
+      "space_to_outline": 10.0,
+      "non-opc": {
+        "datatype": 8,
+        "width": [3.6],
+        "height": [6.1],
+        "space_to_fill": 2.0,
+        "space_to_non_fill": 5.0
+      }
+    },
+
+    "met2": {
+      "layer": 42,
+      "name": "M2",
+      "dir": "V",
+      "datatype": 8,
+      "space_to_outline": 10.0,
+      "non-opc": {
+        "datatype": 8,
+        "width": [3.6],
+        "height": [6.1],
+        "space_to_fill": 2.0,
+        "space_to_non_fill": 5.0
+      }
+    },
+
+    "met3": {
+      "layer": 44,
+      "name": "M3",
+      "dir": "H",
+      "datatype": 8,
+      "space_to_outline": 10.0,
+      "non-opc": {
+        "datatype": 8,
+        "width": [3.6],
+        "height": [6.1],
+        "space_to_fill": 2.0,
+        "space_to_non_fill": 5.0
+      }
+    },
+
+    "met4": {
+      "layer": 46,
+      "name": "M4",
+      "dir": "V",
+      "datatype": 8,
+      "space_to_outline": 10.0,
+      "non-opc": {
+        "datatype": 8,
+        "width": [3.6],
+        "height": [6.1],
+        "space_to_fill": 2.0,
+        "space_to_non_fill": 5.0
+      }
+    },
+
+    "met5": {
+      "layer": 48,
+      "name": "M5",
+      "dir": "H",
+      "datatype": 8,
+      "space_to_outline": 10.0,
+      "non-opc": {
+        "datatype": 8,
+        "width": [3.6],
+        "height": [6.1],
+        "space_to_fill": 2.0,
+        "space_to_non_fill": 5.0
+      }
+    },
+
+    "met6": {
+      "layer": 50,
+      "name": "TOP_M",
+      "dir": "V",
+      "datatype": 8,
+      "space_to_outline": 10.0,
+      "non-opc": {
+        "datatype": 8,
+        "width": [3.6],
+        "height": [6.1],
+        "space_to_fill": 2.0,
+        "space_to_non_fill": 5.0
+      }
+    }
+  },
+
+  "outline": {
+    "layer": 71,
+    "datatype": 0
+  }
+}
+
