@@ -49,7 +49,7 @@ RUN set -eux; \
 
 # -------- OpenROAD from repo (prebuilt binary) --------
 # Put your binary at: orfs/tools/openroad/bin/openroad (tracked via Git LFS)
-COPY tools/openroad/bin/openroad /usr/local/bin/openroad
+COPY orfs/tools/openroad/bin/openroad /usr/local/bin/openroad
 RUN chmod +x /usr/local/bin/openroad \
  && command -v openroad \
  && (openroad -version || openroad -v || openroad -help | head -n 5) || true
@@ -67,5 +67,6 @@ ENV YOSYS_PLUGIN_PATH="/opt/oss-cad-suite/share/yosys/plugins" \
 COPY supervisord.conf /etc/supervisor/conf.d/vnc.conf
 EXPOSE 6080
 CMD ["/usr/bin/supervisord", "-n"]
+
 
 
