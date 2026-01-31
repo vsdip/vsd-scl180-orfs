@@ -63,7 +63,11 @@ flow/platforms/*
 !flow/platforms/sky130io
 !flow/platforms/sky130ram
 !flow/platforms/gf180
+!flow/platforms/scl180fs120
 flow/private
+
+# allow placeholders inside allowed platforms
+!flow/platforms/**/.gitkeep
 
 # network
 .nfs*
