@@ -15,8 +15,8 @@ RUN groupadd --gid ${USER_GID} ${USERNAME} \
 
 # Base packages (your original set)
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    wget curl unzip git git-lfs make python3 python3-pip python3-numpy python3-pandas python3-matplotlib python3-jinja2 python3-xlsxwriter \
-    xvfb xfce4 xfce4-session xfce4-panel xfdesktop4 xfwm4 xfce4-terminal thunar dbus-x11 x11vnc novnc websockify supervisor \
+    wget curl unzip git git-lfs tcl-tclreadline make python3 python3-pip python3-numpy python3-pandas python3-matplotlib python3-jinja2 python3-xlsxwriter \
+    xvfb xfce4 xfce4-session xfce4-panel locale-gen locales xfdesktop4 xfwm4 xfce4-terminal thunar dbus-x11 x11vnc novnc websockify supervisor \
     magic ngspice gtkwave verilator iverilog \
     build-essential autoconf automake libtool m4 cmake ninja-build clang \
     tcl tcl-dev tcllib tcl-trf tclx tk tk-dev locales \
@@ -67,6 +67,7 @@ ENV YOSYS_PLUGIN_PATH="/opt/oss-cad-suite/share/yosys/plugins" \
 COPY .devcontainer/supervisord.conf /etc/supervisor/conf.d/vnc.conf
 EXPOSE 6080
 CMD ["/usr/bin/supervisord", "-n"]
+
 
 
 
