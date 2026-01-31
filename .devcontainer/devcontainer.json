@@ -21,7 +21,8 @@
   "containerEnv": {
     "DISPLAY": ":1"
   },
-"postCreateCommand": "git lfs install && git lfs pull && sudo install -m 0755 /workspaces/vsd-scl180-orfs/orfs/tools/openroad/bin/openroad /usr/local/bin/openroad"
+"postCreateCommand": "set -eux; git lfs install; git lfs pull; test -f /workspaces/vsd-scl180-orfs/orfs/tools/openroad/bin/openroad; if head -n 1 /workspaces/vsd-scl180-orfs/orfs/tools/openroad/bin/openroad | grep -q 'git-lfs'; then echo 'ERROR: openroad is still a Git LFS pointer (LFS not fetched).'; exit 1; fi; sudo install -m 0755 /workspaces/vsd-scl180-orfs/orfs/tools/openroad/bin/openroad /usr/local/bin/openroad; /usr/local/bin/openroad -version || /usr/local/bin/openroad -v || true"
 }
+
 
 
