@@ -7,7 +7,7 @@ export PROCESS = 180
 export TECH_LEF = $(PLATFORM_DIR)/lef/scl18fs120_tech.lef
 export SC_LEF = $(PLATFORM_DIR)/lef/scl18fs120_merged.lef
 
-export LIB_FILES = $(PLATFORM_DIR)/lib/tsl18fs120_scl_ss.filtered_nosrlab.lib \
+export LIB_FILES = $(PLATFORM_DIR)/lib/tsl18fs120_scl_ss.nosrlab.lib \
                      $(ADDITIONAL_LIBS)
 export GDS_FILES = $(wildcard $(PLATFORM_DIR)/gds/*.gds) \
                      $(ADDITIONAL_GDS)
