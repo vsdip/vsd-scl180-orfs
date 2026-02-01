@@ -19,7 +19,7 @@ set_layer_rc -via V2 -resistance 6.96
 set_layer_rc -via V3 -resistance 3.44
 set_layer_rc -via V4 -resistance 1.90
 set_layer_rc -via V5 -resistance 0.90
-set_layer_rc -via VL -resistance 0.88
+#set_layer_rc -via VL -resistance 0.88
 
 # Default wire RC layers
 set_wire_rc -signal -layer M1
