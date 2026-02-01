@@ -200,6 +200,32 @@ make klayout_6_final.gds
 * KLayout launches graphically
 
 ---
+---
+
+### Opening the noVNC Desktop (GUI Access)
+
+![Open noVNC Lite](images/11_Open_VNC_Lite.png)
+
+Once Port **6080** is opened in GitHub Codespaces, the noVNC web interface becomes accessible.  
+This page confirms that the browser-based VNC server is running.
+
+**Recommended action:**
+- Click **`vnc_lite.html`** for a faster and lightweight desktop session.
+
+This opens an XFCE desktop directly inside your browser, with access to graphical EDA tools such as **KLayout**, **GTKWave**, and **Magic**.
+
+---
+
+### Viewing the Final Layout in KLayout
+
+![Observe final GDS in KLayout](images/12_ObserveLayout.png)
+
+After running the flow successfully, the final GDS can be viewed using:
+
+```bash
+make klayout_6_final.gds
+
+---
 
 # 2️⃣ Running the Flow on a **Local Ubuntu Machine**
 
