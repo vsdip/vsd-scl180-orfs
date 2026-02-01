@@ -200,7 +200,6 @@ make klayout_6_final.gds
 * KLayout launches graphically
 
 ---
----
 
 ### Opening the noVNC Desktop (GUI Access)
 
@@ -220,10 +219,6 @@ This opens an XFCE desktop directly inside your browser, with access to graphica
 
 ![Observe final GDS in KLayout](images/12_ObserveLayout.png)
 
-After running the flow successfully, the final GDS can be viewed using:
-
-```bash
-make klayout_6_final.gds
 
 ---
 
