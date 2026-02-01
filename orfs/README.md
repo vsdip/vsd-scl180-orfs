@@ -1,4 +1,17 @@
-# OpenROAD Flow
+> ⚠️ **IMPORTANT — Read Before Proceeding**
+>
+> This README is intended **only for advanced users and contributors** who want to:
+> - Build **OpenROAD** from source
+> - Install **OpenROAD-Flow-Scripts (ORFS)** manually
+> - Work with **custom or non-SCL PDKs**
+>
+> 🚀 **If your goal is to run the SCL180 RTL-to-GDS flow**,  
+> **DO NOT follow this document.**
+>
+> 👉 Please refer to the **main repository README** instead:  
+> https://github.com/vsdip/vsd-scl180-orfs
+
+# OpenROAD & OpenROAD-Flow-Scripts — Build From Source (Advanced Users)
 
 [![Build Status](https://jenkins.openroad.tools/buildStatus/icon?job=OpenROAD-flow-scripts-Public%2Fpublic_tests_all%2Fmaster)](https://jenkins.openroad.tools/view/Public/job/OpenROAD-flow-scripts-Public/job/public_tests_all/job/master/)
 [![Docs](https://readthedocs.org/projects/openroad-flow-scripts/badge/?version=latest)](https://openroad-flow-scripts.readthedocs.io/en/latest/?badge=latest)
