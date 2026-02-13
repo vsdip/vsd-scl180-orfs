@@ -3,7 +3,7 @@ set -euo pipefail
 
 ORFS="/workspaces/vsd-scl180-orfs/orfs/tools/openroad"
 
-git lfs install
+git lfs install --skip-repo || true
 git lfs pull
 
 # Install binary
