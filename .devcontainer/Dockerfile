@@ -23,7 +23,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     perl libfile-which-perl ca-certificates gnupg lsb-release pkg-config \
     libcairo2-dev libgl1-mesa-dev libglu1-mesa-dev freeglut3-dev \
     libx11-dev libxext-dev libxrender-dev libxpm-dev libxaw7-dev libfontconfig1-dev \
-    libreadline-dev libncurses-dev flex bison gawk tcsh time bc vim \
+    libreadline-dev libncurses-dev flex bison gawk tcsh time bc vim gedit \
     libqt5charts5 libyaml-cpp0.7 \
  && apt-get clean && rm -rf /var/lib/apt/lists/*
 
@@ -71,6 +71,7 @@ ENV YOSYS_PLUGIN_PATH="/opt/oss-cad-suite/share/yosys/plugins" \
 COPY .devcontainer/supervisord.conf /etc/supervisor/conf.d/vnc.conf
 EXPOSE 6080
 CMD ["/usr/bin/supervisord", "-n"]
+
 
 
 
